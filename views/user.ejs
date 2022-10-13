@@ -10,7 +10,6 @@
 <body>
   <div style="margin: 1.5%;">
     <a href="/home"><button class="btn btn-secondary">back to home</button></a>
-    <a href="/course/add/"><button class="btn btn-secondary">add course</button></a>
     <a href="/course/"><button class="btn btn-secondary">Courses</button></a>
     <h1>My Courses</h1>
     <table class="table table-bordered">
@@ -20,6 +19,14 @@
         <td>course duration</td>
         <td>action</td>
       </tr>
+      <%result.forEach((el) => { %>
+        <tr>
+          <td><%=el.name%></td>
+          <td><%=el.description%></td>
+          <td><%=convertHMS(el.duration)%></td>
+          <td><a href="/user/<%=el.id%>/"><button class="btn btn-primary">Open Course</button></a></td>
+        </tr>
+      <% })%>
     </table>
   </div>
 </body>

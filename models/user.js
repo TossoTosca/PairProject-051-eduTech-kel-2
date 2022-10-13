@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
       User.hasOne(models.Profile)
       User.hasMany(models.UserCourse)
     }
+
+    get age(){
+      
+    }
   }
   User.init({
     userName: {
@@ -42,14 +46,14 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           msg: "Please Select Role !"
         }
-      }
-    }, 
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: "Please Input Email!"
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "email Cannot Be Empty"
+          }
         }
       }
     }}, {
