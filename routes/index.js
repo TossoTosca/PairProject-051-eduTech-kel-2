@@ -2,15 +2,14 @@ const routes = require('express').Router()
 const { User } = require('../models/index')
 const bcrypt = require('bcryptjs')
 
-// const courseRoute = require('./course')
-// const userRoute = require('./user')
+const courseRoute = require('./course')
+const userRoute = require('./user')
 
 // const Controller = require('../controllers/controller')
 
 routes.get('/', (req, res) => {
     res.render('landingPage')
-    })
-
+})
     
 routes.get('/login', (req, res) => {
     const { error } = req.query;
@@ -99,4 +98,9 @@ routes.get('/logout', (req,res) => {
         }
       })
 })
+
+routes.use('/course', courseRoute)
+routes.use('/user', userRoute)
+
+
 module.exports = routes;

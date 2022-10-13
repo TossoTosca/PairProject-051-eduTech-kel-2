@@ -19,6 +19,14 @@
         <td>course duration</td>
         <td>action</td>
       </tr>
+      <% result.forEach((el) => {%>
+        <tr>
+          <td><%=el.name%></td>
+          <td><%=convertHMS(el.duration)%></td>
+          <td><%=el.description%></td>
+          <td><a href="/course/get/"><button class="btn btn-primary">add this course</button></a></td>
+        </tr>
+      <%}) %>
     </table>
   </div>
 </body>
