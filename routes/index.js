@@ -1,5 +1,5 @@
 const routes = require('express').Router()
-const { User } = require('../models/index')
+const { User, Profile } = require('../models/index')
 const bcrypt = require('bcryptjs')
 
 // const courseRoute = require('./course')
@@ -54,17 +54,42 @@ routes.get("/register", (req, res) => {
     const { error } = req.query;
     res.render("register", { error })
   });
+
+
+
 routes.post("/register", (req, res) => {
-    const { username, password, role } = req.body;
+    console.log(req.body)
+    const { email, userName, firstName, lastName, birthDate ,password, role } = req.body;
     User.create({
-      username ,
-      password,
-      role
-    })
-    .then(() => {
-      res.redirect("/");
+        email,
+        userName,
+        password,
+        role,
+        email
+    }, {
+        include: Profile,
+        returning: true
+    }
+    )
+    .then((test) => {
+        const UserId = test.id
+        Profile.create({
+            firstName,
+            lastName,
+            birthDate,birthDate,
+            UserId
+        })
+        .then((data) =>{
+            // console.log(data,"__________________________________________")
+            res.send(data)
+        })
+        .catch((err) => {
+            // console.log(err,":::::::::::::::::::::::::::::::::::::::::")
+            res.send(err)
+        })
     })
     .catch((err) => {
+        // console.log(err,"+++++++++++++++++++++++++++++++++++")
         let error = err.errors;
         return res.redirect(`/register?error=${error}`);
     });
@@ -84,7 +109,20 @@ routes.use((req, res, next) => {
 
 
 routes.get('/home', (req, res) =>{
-    res.render(`home`)
+    let userId = req.session.userId
+    User.findOne({
+        where: {
+            id: userId 
+        }
+    })
+    .then((data) => {
+        // res.send(data)
+        console.log(data)
+        res.render('home', {data})
+    })
+    .catch((err) => {
+        res.send(err)
+    })
 })
 
 

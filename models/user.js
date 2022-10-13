@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    username: {
+    userName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -43,11 +43,20 @@ module.exports = (sequelize, DataTypes) => {
           msg: "Please Select Role !"
         }
       }
+    }, 
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Please Input Email!"
+        }
+      }
     }}, {
-    hooks:{
+      hooks:{
       beforeCreate(instance,option) {
         const hash = formatPass(instance.password)
-        console.log(hash)
+        // console.log(hash)
         instance.password = hash
       }
     },
