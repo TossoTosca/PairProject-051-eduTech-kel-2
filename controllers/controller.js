@@ -1,22 +1,10 @@
 class Controller {
-  static showLogin(req, res) {
-    res.render('login')
-  }
-
-  static addUser(req, res) {
-    res.render('addUser')
-  }
-
-  static deployAddUser(req, res) {
-    res.send('hello')
-  }
-
   static showHome(req, res) {
-    res.render('home')
+    res.render('home') /// => /home => nampilin highlight course res.render('home' {data dari course})
   }
 
   static showCourse(req, res) {
-    res.send('this is show course')
+    res.send('this is show course') // => /home/course
   }
   static addCourse(req, res) {
     res.render('addCourse')

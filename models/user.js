@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const formatPass = require('../helpers/formatPass');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -16,10 +17,40 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    userName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING
-  }, {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Please Input User Name!"
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Password Cannot Be Empty"
+        }
+      }
+    },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Please Select Role !"
+        }
+      }
+    }}, {
+    hooks:{
+      beforeCreate(instance,option) {
+        const hash = formatPass(instance.password)
+        console.log(hash)
+        instance.password = hash
+      }
+    },
     sequelize,
     modelName: 'User',
   });
