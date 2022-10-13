@@ -1,9 +1,7 @@
 const routes = require('express').Router()
 const Controller = require('../controllers/controller')
 
-routes.get('/', (req, res) => {
-  res.render('course')
-})
+routes.get('/', Controller.showCourse)
 
 routes.get('/add/', Controller.addCourse)
 

@@ -59,8 +59,9 @@ routes.post("/register", (req, res) => {
       username ,
       password,
       role
-    })
-    .then(() => {
+    },{returning:true})
+    .then((result) => {
+      console.log(result)
       res.redirect("/");
     })
     .catch((err) => {

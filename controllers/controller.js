@@ -1,12 +1,21 @@
+const {Course} = require('../models/index')
+const {User} = require('../models/index')
+const {UserCourse} = require('../models/index')
+const convertHMS = require('../helpers/convertMHS')
+
 class Controller {
   static showHome(req, res) {
     res.render('home')
   }
 
   static showCourse(req, res) {
+    // console.log(req.session.userRole, '>>>>>>>>>>>>>>>>')
     Course.findAll()
     .then((result) => {
       res.render('course', {result,  convertHMS})
+    })
+    .catch((err) => {
+      res.send(err)
     })
   }
   static addCourse(req, res) {
@@ -21,14 +30,6 @@ class Controller {
       subject: courseSubject
     })
     .then((result)=>{
-      // res.redirect('/course/')
-      return Course.findAll({
-        where: {
-          name: courseName
-        }
-      })
-    })
-    .then((result) => {
       res.redirect('/course/')
     })
     .catch((err) => {
