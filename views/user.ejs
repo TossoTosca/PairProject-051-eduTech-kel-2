@@ -19,12 +19,12 @@
         <td>course duration</td>
         <td>action</td>
       </tr>
-      <%[1,2,3].forEach((el) => { %>
+      <%result.forEach((el) => { %>
         <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td><a href="/user/:courseId/"><button class="btn btn-primary">Open Course</button></a></td>
+          <td><%=el.name%></td>
+          <td><%=el.description%></td>
+          <td><%=convertHMS(el.duration)%></td>
+          <td><a href="/user/<%=el.id%>/"><button class="btn btn-primary">Open Course</button></a></td>
         </tr>
       <% })%>
     </table>

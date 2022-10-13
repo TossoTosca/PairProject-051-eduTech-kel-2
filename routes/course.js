@@ -10,5 +10,13 @@ routes.post('/add/', Controller.deployAddCourse)
 /// yang dibawah ini tambahan routes
 routes.get('/home', Controller.showHome) 
 
+routes.get('/:courseId/get/:userId/', Controller.addUserCourse)
+
+routes.get('/:courseId/delete/', Controller.deleteCourse)
+
+routes.get('/:courseId/edit/', Controller.editCourse)
+
+routes.post('/:courseId/edit/', Controller.deployEditCourse)
+
 
 module.exports = routes

@@ -10,7 +10,9 @@
 <body>
   <div style="margin: 1.5%;">
     <a href="/home"><button class="btn btn-secondary">back to home</button></a>
-    <a href="/course/add/"><button class="btn btn-secondary">add course</button></a>
+    <%if (role == 'teacher') { %>
+      <a href="/course/add/"><button class="btn btn-secondary">add course</button></a>
+    <%}%>
     <h1>Ini Home Course</h1>
     <table class="table table-bordered">
       <tr>
@@ -24,7 +26,15 @@
           <td><%=el.name%></td>
           <td><%=convertHMS(el.duration)%></td>
           <td><%=el.description%></td>
-          <td><a href="/course/get/"><button class="btn btn-primary">add this course</button></a></td>
+          <td><a href="/course/<%=el.id%>/get/<%=id%>/"><button class="btn btn-primary">add this course</button></a>
+            <%if (role == 'teacher') { %>
+              <a href="/course/<%=el.id%>/edit"><button class="btn btn-secondary">Edit course</button></a>
+            <%}%>
+            <%if (role == 'teacher') { %>
+              <a href="/course/<%=el.id%>/delete/"><button class="btn btn-danger">Delete course</button></a>
+            <%}%>
+          </td>
+
         </tr>
       <%}) %>
     </table>

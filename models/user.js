@@ -15,9 +15,13 @@ module.exports = (sequelize, DataTypes) => {
       User.hasOne(models.Profile)
       User.hasMany(models.UserCourse)
     }
+
+    get age(){
+      
+    }
   }
   User.init({
-    username: {
+    userName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -53,10 +57,10 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }}, {
-    hooks:{
+      hooks:{
       beforeCreate(instance,option) {
         const hash = formatPass(instance.password)
-        console.log(hash)
+        // console.log(hash)
         instance.password = hash
       }
     },
