@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <style>
+    .form {
+      width: 30%;
+    }
+  </style>
+  <title>Registration</title>
+</head>
+<body>
+  <div style="margin: 1.5%;">
+    <a href="/"><button class="btn btn-secondary">back to login page</button></a><br>
+    <h1>Ini Add User</h1>
+    <form method="post" action="/add/">
+      <label>Username</label><br>
+      <input type="text" name="userName" class="form-control form"><br><br>
+      <label>First Name</label><br>
+      <input type="text" name="firstName" class="form-control form"><br><br>
+      <label>Last Name</label><br>
+      <input type="text" name="lastName" class="form-control form"><br><br>
+      <label>Role</label><br>
+      <select name="role" class="form-select" aria-label="Default select example">
+        <option selected="true" disabled="true">-- choose one --</option>
+        <option value="user">user</option>
+        <option value="admin">admin</option>
+      </select><br><br>
+      <label>Date of Birth</label><br>
+      <input type="date" name="birthDate"><br><br>
+      <label>Email</label><br>
+      <input type="text" name="email" class="form-control form"><br><br>
+      <label>Password</label><br>
+      <input type="text" name="password" class="form-control form"><br><br>
+      <input type="submit" class="btn btn-primary">
+    </form>
+  </div>
+</body>
+</html>

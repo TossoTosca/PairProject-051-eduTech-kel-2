@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+          background-image: url('https://i.postimg.cc/wjPZ0nKX/logo.png');
+        }
+        </style>
+    <title>RS</title>
+</head>
+
+<body>
+    
+    <div class="container mt-3 bg-primary text-white rounded">
+        <h1 class="p-4" style="text-align: center;">Register</h1> 
+        <% if (error) { %>
+            <p style="color: red;"><%= error %></p>
+        <% } %>
+        <hr>
+       
+        <form class="px-4 py-3" action="/register" method="post">
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control"name="email" required>
+              </div>
+              <div class="mb-3">
+                  <label class="form-label">First Name</label>
+                  <input type="text" class="form-control"name="firstName" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" class="form-control"name="lastName" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Date Of Birth</label>
+                    <input type="date" class="form-control" name="birthDate" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Username</label>
+                  <input type="text" class="form-control"name="userName" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+              <input type="password" class="form-control"name="password" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Role</label>
+                <select name="role">
+                    <option selected disabled>Open this select menu</option>
+                    <option value="student">Register As A Student</option>
+                    <option value="teacher">Register As A Teacher</option>
+                </select>
+              </div>
+            <button type="submit" class="btn btn-success">Register</button>
+          </form>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/login">Already have Account? Login</a>
+          <a class="dropdown-item" href="/">gak jadi?</a>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
